@@ -22,6 +22,9 @@ class String
 
     #/----------------------------
     split_number = self.split('').reverse
+    @num_not_changed = self.split('').map(&:to_i).reverse
+    # binding.pry
+
     i = 0
     word_array = []
     if split_number[i+1] == "1"
@@ -45,14 +48,14 @@ class String
         word_array = word_array.push(array_thousands.fetch(num))
       elsif i == 4
 
-        #// issues with statement below
+        #// issues with statement below GOT THIS FIXED BUT ISSUES STILL
+        #// 11700 causes issue and 1,022,000,000 doesn't say 'twenty-2'
         if split_number[i-1] == '0'
           word_array = word_array.push('thousand')
-          if split_number[6] = '0' && split_number[7] = '0' && split_number[8] = '0'
-            binding.pry
-            word_array.pop()
+          # binding.pry
+          if @num_not_changed[3] == 0 && @num_not_changed[4] == 0 && @num_not_changed[5] == 0
+            pop = word_array.pop()
           end
-
         end
         num = split_number[i]
         word_array = word_array.push(array_tens.fetch(num))
